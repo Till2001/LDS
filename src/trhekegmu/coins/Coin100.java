@@ -1,0 +1,8 @@
+package trhekegmu.coins;
+
+public class Coin100 extends Coin{
+
+	public Coin100() {
+		super(100);
+	}
+}
