@@ -2,14 +2,14 @@ package trhekegmu.coins;
 
 public abstract class Coin {
 
-	private Double Denom;
+	private int Denom;
 	
-	public Coin(double pD){
+	public Coin(int pD){
 		Denom = pD;
 		
 	}
 	
-	public double getDenom() {
+	public int getDenom() {
 		return Denom;
 	}
 }

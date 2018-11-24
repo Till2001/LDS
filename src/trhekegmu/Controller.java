@@ -1,6 +1,7 @@
 package trhekegmu;
 
 import basiX.Dialog;
+import basiX.Hilfe;
 import trhekegmu.coins.*;
 
 public class Controller {
@@ -9,7 +10,7 @@ public class Controller {
 	private Stack<Integer> s;
 	private String string;
 	private Stack<Coin>	sc;
-
+	private int v1,v2,v3,v4,v5;
 	
 	public Controller() {
 		q = new Queue<>();
@@ -28,12 +29,73 @@ public class Controller {
 			q.enqueue(Dialog.eingabeINT("Eingabe", "Geben sie die "+t+" Zahl ein."));
 		}
 		convertqs(q, s);
-		stackausgabe(s);
+		integerstackausgabe(s);
 		
 	}
 	
 	
-	public void stackausgabe(Stack<Integer> pS) { //Stack Ausgeben
+	public void A2() {
+		int x = 20;
+		for(int i = 0;x>i;x--) {
+			switch(Hilfe.zufall(0, 4)) {
+			case 0:
+				sc.push(new Coin10());
+				break;
+			case 1:
+				sc.push(new Coin20());
+				break;
+			case 2:
+				sc.push(new Coin50());
+				break;
+			case 3:
+				sc.push(new Coin100());
+				break;
+			case 4:
+				sc.push(new Coin200());
+				break;
+			}
+		}
+
+		
+		
+		for(int i = 20;i>0;i--) {
+			switch(sc.top().getDenom()) {
+			case 10:
+				v1++;
+				break;
+			case 20:
+				v2++;
+				break;
+			case 50: 
+				v3++;
+				break;
+			case 100:
+				v4++;
+				break;
+			case 200:
+				v5++;
+				break;
+			}
+			sc.pop();
+		}
+		
+		v1 = v1*10;
+		v2 = v2*20;
+		v3 = v3+50;
+		v4 = v4*100;
+		v5 = v5*200;
+
+		double va = v1+v2+v3+v4+v5;
+		va = va/100;
+		Dialog.info("Ausgabe", "Der Münzstapel ist "+va+"€ wert");
+		
+	}
+	
+
+	
+
+
+	public void integerstackausgabe(Stack<Integer> pS) { //Stack Ausgeben
 		
 		while(!pS.isEmpty()){
 			Dialog.info("Ausgabe", ""+pS.top());

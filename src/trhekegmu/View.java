@@ -23,7 +23,7 @@ public class View {
 			c.A1();
 			break;
 		case "A2":
-			
+			c.A2();
 			break;
 		case "A3":
 			break;
