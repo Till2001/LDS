@@ -9,7 +9,7 @@ public class View {
 	
 	public View() {
 		c = new Controller();
-		
+		Dialog.info("Info", "Bisher sind nur Aufgaben 1 2 3 und 4 implementiert");
 		auswahlstrings = new String[6];
 		auswahlstrings[0] = "A1";
 		auswahlstrings[1] = "A2";
@@ -26,10 +26,18 @@ public class View {
 			c.A2();
 			break;
 		case "A3":
+			c.A3Eingabe();
 			break;
 		case "A4":
+			String tmp = Dialog.eingabe("Eingabe", "Welches Wort soll getestet werden?"+"\n"+"Groß und klein Schreibung wird beachtet!");
+			if(c.paltest(tmp)) {
+				Dialog.info("Ausgabe", tmp+" ist ein Pallindrom");
+			}else {
+				Dialog.info("Ausgabe", tmp+" ist kein Pallindrom");
+			}
 			break;
 		case "A5":
+			Dialog.info("Info", "Noch nicht implementiert");
 			break;
 		case "Ende":
 			Dialog.info("Info", "und tüss");
@@ -41,8 +49,8 @@ public class View {
 	
 	
 	public static void main(String[] args) {
-		View v;
-		v = new View();
+		View v = new View();
+
 	}
 
 }

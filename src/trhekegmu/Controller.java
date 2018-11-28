@@ -7,15 +7,17 @@ import trhekegmu.coins.*;
 public class Controller {
 
 	private Queue<Integer> q;
-	private Stack<Integer> s;
-	private String string;
+	private Stack<Integer> s,t,r;
 	private Stack<Coin>	sc;
 	private int v1,v2,v3,v4,v5;
-	
+	private String teststring;
 	public Controller() {
 		q = new Queue<>();
 		s = new Stack<>();
+		r = new Stack<>();
+		t = new Stack<>();
 		sc = new Stack<>();
+		teststring = "";
 		
 		
 	}
@@ -55,7 +57,7 @@ public class Controller {
 				break;
 			}
 		}
-
+		
 		
 		
 		for(int i = 20;i>0;i--) {
@@ -91,10 +93,6 @@ public class Controller {
 		
 	}
 	
-
-	
-
-
 	public void integerstackausgabe(Stack<Integer> pS) { //Stack Ausgeben
 		
 		while(!pS.isEmpty()){
@@ -103,10 +101,53 @@ public class Controller {
 		}
 	}
 	
-	public void convertqs(Queue<Integer> pQ,Stack<Integer> pS) { //Origin -> Target Q->S
+	public void convertqs(Queue<Integer> pQ,Stack<Integer> pS) { //Converts Q->S
 		while(!pQ.isEmpty()) {
 			pS.push(pQ.front());
 			pQ.dequeue();
 		}
 	}
+	
+	
+	public boolean paltest(String pS) {
+		
+		
+		for(int i = pS.length();i>0;i--) {
+			teststring = teststring+pS.charAt(i-1);
+		}
+		return pS.equals(teststring);
+		
+		
+		
+		
+	}
+	
+	public void A3Eingabe() {
+		int x = Dialog.eingabeINT("Eingabe", "Wie Lang ist die Reihe / Wie hoch ist der Turm");
+		for(int i = 0;i<x;i++) {
+			t.push(Dialog.eingabeINT("Eingabe", "Liegt ein Kleiner oder Großer Teller vor?"+"\n"+"Es wird von unten nach oben eingegeben."+"\n"+"1 = Kleiner Teller | 2 = Großer Teller"));
+		}
+		for(int i = 0;i<x;i++) {
+			r.push(Dialog.eingabeINT("Eingabe", "Liegt ein Kleiner oder Großer Bieber vor?"+"\n"+"Es wird von hinten nach vorne eingegeben."+"\n"+"1 = Kleiner Bieber | 2 = Großer Bieber"));
+		}
+		if(A3Compare(r, t)) {
+			Dialog.info("Ausgabe", "Die Reihe passt zu dem Turm.");
+		}else {
+			Dialog.info("Ausgabe", "Die Reihe passt nicht zum Turm.");
+		}
+	}
+	
+	public boolean A3Compare(Stack<Integer> pR,Stack<Integer> pT) {
+		while(!pR.isEmpty()||!pT.isEmpty()) {
+			if(pR.top().equals(pT.top())) {
+				pR.pop();
+				pT.pop();
+			}else {
+				return false;
+			}
+		}
+		return true;
+	}	
+	
+	
 }
