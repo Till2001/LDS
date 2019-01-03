@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - View",
+            "request": "launch",
+            "mainClass": "trhekegmu.View",
+            "projectName": "LDS"
+        }
+    ]
+}
